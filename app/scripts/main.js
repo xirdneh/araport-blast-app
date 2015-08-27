@@ -89,7 +89,8 @@
     BlastApp.checkJobListStatus = function(){
         var tbody = appContext.find('.blast-job-history-content table tbody')[0];
         var trs = tbody.rows;
-        var tr, status, id, newStatus, td, icon, cnt;
+        var tr, status, id, newStatus, td, icon, cnt, finished;
+        finished = 0;
         var sf = function(response){
             var data = JSON.parse(response.data);
             if(data.status === "success"){
@@ -98,14 +99,15 @@
                 td = $(tr.find("td")[0]);
                 if(BLAST_CONFIG.errorStates.indexOf(newStatus) >= 0) {
                     icon = td.find('.job-list-icon span');
-                    icon.removeClass('glyphicon-refresh blast-reload-icon');
+                    icon.removeClass('glyphicon-refresh blast-reload-icon glyphicon-remove');
                     icon.addClass('glyphicon-remove');
                     icon.attr('style', 'color:red;');
                     tr.attr('data-status', newStatus);
                     td.find('.job-list-status').text(newStatus);
                 }else if(BLAST_CONFIG.finishedStates.indexOf(newStatus) >= 0) {
+                    finished++;
                     icon = td.find('.job-list-icon span');
-                    icon.removeClass('glyphicon-ok blast-reload-icon');
+                    icon.removeClass('glyphicon-ok blast-reload-icon glyphicon-refresh glyphicon-remove');
                     icon.addClass('glyphicon-ok');
                     icon.attr('style', 'color:green;');
                     tr.attr('data-status', newStatus);
@@ -136,7 +138,9 @@
         }
         if(cnt === 0){
             clearInterval(BlastApp._jobListChecker);
-
+        }
+        if(finished > 0){
+            BlastApp.getJobList();
         }
     };
 
@@ -200,9 +204,7 @@
         Agave.api.jobs.manage({'jobId': jobId, 'body':"{\"action\":\"" + action + "\"}"}, 
             function(response){
                 var data = JSON.parse(response.data);
-                if(data.status == "success"){
                     BlastApp.getJobList();
-                }
             }, 
             function(err){
                 BlastApp.jobError("There was an error resubmitting the job, please refresh and try again.");
@@ -257,6 +259,9 @@
     };
 
     BlastApp.createDownloadLink = function(job, row, archive){
+         if(BLAST_CONFIG.finishedStates.indexOf(job.status) < 0) {
+            return;
+        }         
         var a;
         var tdspan = row.find(".blast-history-download");
         a = $("<a href=\"" + archive  + "\">Download Results</a>");
@@ -336,7 +341,7 @@
         jhm.append(span);
     };
 
-    BlastApp.filterBy = function(table, filter, coli){
+    BlastApp.filterBy = function(table, filter, coli, showPage){
         var trs = $("tbody tr", table);
         var tr, td, val;
         var re = new RegExp(filter);
@@ -355,8 +360,11 @@
                 tr.removeAttr("data-lvot");
             }
         }
+        table.attr("data-filter", filter);
         var rlength = $("tbody tr[data-lvot!=\"true\"]", table).length;
-        BlastApp.showPage(table, rlength, 10, 1, 1);
+        if(showPage){
+            BlastApp.showPage(table, rlength, 10, 1, 1);
+        }
     };
 
     BlastApp.printTableFilter = function(table, jhc, values, label, name){
@@ -368,7 +376,7 @@
             o = $("<option value=\"" + v.val + "\">" + v.lbl + "</option>");
             select.append(o);
         }
-        select.change(function(){BlastApp.filterBy(table, $(this).val(), 1);});
+        select.change(function(){BlastApp.filterBy(table, $(this).val(), 1, true);});
         jhc.append(lbl);
         jhc.append(select);
     };
@@ -609,6 +617,7 @@
                     jhc.html("");
                     var jhm = appContext.find('.blast-history-meta');
                     var job, ul, i;
+                    $(".blast-job-history-content .job-history-controls").html("");
                     BlastApp.printTableFilter(table, 
                             $(".blast-job-history-content .job-history-controls"),
                             blastTypesFilter, "Filter by Blast Type: ", "blast-filter");
@@ -618,6 +627,9 @@
                             continue;
                         }
                         BlastApp.printJobDetails(job, jhc, jhm);
+                    }
+                    if(table.attr("data-filter")){
+                        BlastApp.filterBy(table, table.attr("data-filter"), 1, false);
                     }
                     BlastApp.showPage(table, data.result.length, 10, 1, page);
                     //ul = BlastApp.buildPager(table, data.result, 10, page);
