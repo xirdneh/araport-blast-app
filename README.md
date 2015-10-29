@@ -52,11 +52,11 @@ When you are ready you can upload your application to the
 BLAST notes
 ===========
 
-- [ ] Database types are now ```nucl``` or ```prot``` to track directly to NCBI nomenclature
-- [ ] Versioned database indexes are stored as **araport.blastdb.index metadata** records. There are more than one. Grab them all, generate the union set of databases from ```value.docker_this.databases```. Consider cacheing the result of these queries in localStorage to make the app more performant. 
+- [x] Database types are now ```nucl``` or ```prot``` to track directly to NCBI nomenclature
+- [x] Versioned database indexes are stored as **araport.blastdb.index metadata** records. There are more than one. Grab them all, generate the union set of databases from ```value.docker_this.databases```. Consider cacheing the result of these queries in localStorage to make the app more performant. *localStorage missing*
 - [ ] The underlying BLAST app now supports provision of a custom database file ```inputs.customDatabase``` at job submission. User can ALSO specify databases from the list when BLASTing. Support choosing from previous uploads, or uploading a new file, like we do for sPARTA
 - [ ] Display ONLY the database types (nucl or prot) appropriate to the type of BLAST selected. May need a filter on this later but not now
-- [ ] Enable user to display previous BLAST outputs - Use preview modal like in Sparta/miFerno apps or Hanlon's file browser
+- [x] Enable user to display previous BLAST outputs - Use preview modal like in Sparta/miFerno apps or Hanlon's file browser
 - [ ] For each blast type, remember the selected databases between sessions. Add button to clear all/check all. 
 - [ ] Support NAMING the job at submit time
 - [ ] BLAST is consolidated to a single Agave app now. The specific program to run is distinguished by ```parameters.blast_application```
@@ -64,7 +64,7 @@ BLAST notes
 - [ ] Create a standalone My BLASTS app with just the history plus extra sugar (share, download, etc)
 - [ ] In Blast Input Sequence, allow select/upload in addition to paste. On paste, allow naming of file.
 - [ ] Under Advanced Options, reorder params by priority (see below)
-- [ ] Rename Job History to "BLAST History"
+- [x] Rename Job History to "BLAST History"
 - [ ] Enhance the UX around the progress meter: Either a progress bar thing or at least replace the AGAVE STATUS words with human-comprehensible text (I like the former idea BTW)
 - [ ] On job submit, pop open the History panel to highlight that it exists
 - [ ] Replace BLAST app dropdown with Bootstrap-style radio buttons
