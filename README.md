@@ -70,6 +70,15 @@ BLAST notes
 - [ ] Replace BLAST app dropdown with Bootstrap-style radio buttons
 - [x] Disable the Run BLAST button until at least an input sequence and database have been selected
 - [ ] Make the Run BLAST button more evident, either by placement or appearance
+*** 10/30/2015 ***
+- More info: inputs, Id, parameters -h
+- Remove end time use only creation time
+- Disabled Run button = gray; Enabled Run button = green
+- Airplane or Rocket icon for Run button
+- Check with Steve on how SpartA handles uploads
+- Custom databases will only be Update and Select, no pasting!
+- araport.blastapp.index metadata is for the Agave app, the parameter is for the blast type.
+- 
 
 ## BLAST app via databases to display
 
