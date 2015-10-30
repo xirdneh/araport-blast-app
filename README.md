@@ -66,7 +66,7 @@ BLAST notes
 - [x] Under Advanced Options, reorder params by priority (see below)
 - [x] Rename Job History to "BLAST History"
 - [ ] Enhance the UX around the progress meter: Either a progress bar thing or at least replace the AGAVE STATUS words with human-comprehensible text (I like the former idea BTW)
-- [ ] On job submit, pop open the History panel to highlight that it exists
+- [x] On job submit, pop open the History panel to highlight that it exists
 - [ ] Replace BLAST app dropdown with Bootstrap-style radio buttons
 - [x] Disable the Run BLAST button until at least an input sequence and database have been selected
 - [ ] Make the Run BLAST button more evident, either by placement or appearance
