@@ -70,7 +70,7 @@ BLAST notes
 - [ ] Replace BLAST app dropdown with Bootstrap-style radio buttons
 - [x] Disable the Run BLAST button until at least an input sequence and database have been selected
 - [ ] Make the Run BLAST button more evident, either by placement or appearance
-- 
+
 *** 10/30/2015 ***   
 
 
