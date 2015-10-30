@@ -70,7 +70,10 @@ BLAST notes
 - [ ] Replace BLAST app dropdown with Bootstrap-style radio buttons
 - [x] Disable the Run BLAST button until at least an input sequence and database have been selected
 - [ ] Make the Run BLAST button more evident, either by placement or appearance
-*** 10/30/2015 ***
+- 
+*** 10/30/2015 ***   
+
+
 - More info: inputs, Id, parameters -h
 - Remove end time use only creation time
 - Disabled Run button = gray; Enabled Run button = green
