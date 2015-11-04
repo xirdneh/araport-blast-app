@@ -53,9 +53,9 @@ BLAST notes
 ===========
 
 - [x] Database types are now ```nucl``` or ```prot``` to track directly to NCBI nomenclature
-- [x] Versioned database indexes are stored as **araport.blastdb.index metadata** records. There are more than one. Grab them all, generate the union set of databases from ```value.docker_this.databases```. Consider cacheing the result of these queries in localStorage to make the app more performant. *localStorage missing*
+- [x] Versioned database indexes are stored as **araport.blastdb.index metadata** records. There are more than one. Grab them all, generate the union set of databases from ```value.docker_this.databases```. Consider cacheing the result of these queries in localStorage to make the app more performant.
 - [ ] The underlying BLAST app now supports provision of a custom database file ```inputs.customDatabase``` at job submission. User can ALSO specify databases from the list when BLASTing. Support choosing from previous uploads, or uploading a new file, like we do for sPARTA
-- [ ] Display ONLY the database types (nucl or prot) appropriate to the type of BLAST selected. May need a filter on this later but not now
+- [x] Display ONLY the database types (nucl or prot) appropriate to the type of BLAST selected. May need a filter on this later but not now
 - [x] Enable user to display previous BLAST outputs - Use preview modal like in Sparta/miFerno apps or Hanlon's file browser
 - [ ] For each blast type, remember the selected databases between sessions. Add button to clear all/check all. 
 - [x] Support NAMING the job at submit time
@@ -74,13 +74,13 @@ BLAST notes
 *** 10/30/2015 ***   
 
 
-- More info: inputs, Id, parameters -h
-- Remove end time use only creation time
-- Disabled Run button = gray; Enabled Run button = green
-- Airplane or Rocket icon for Run button
-- Check with Steve on how SpartA handles uploads
-- Custom databases will only be Update and Select, no pasting!
-- araport.blastapp.index metadata is for the Agave app, the parameter is for the blast type.
+- [ ] More info: inputs, Id, parameters -h
+- [ ] Remove end time use only creation time
+- [x] Disabled Run button = gray; Enabled Run button = green
+- [x] Airplane or Rocket icon for Run button
+- [x] Check with Steve on how SpartA handles uploads
+- [ ] Custom databases will only be Update and Select, no pasting!
+- [x] araport.blastapp.index metadata is for the Agave app, the parameter is for the blast type.
 
 ## BLAST app via databases to display
 
