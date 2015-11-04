@@ -59,17 +59,17 @@ BLAST notes
 - [x] Enable user to display previous BLAST outputs - Use preview modal like in Sparta/miFerno apps or Hanlon's file browser
 - [ ] For each blast type, remember the selected databases between sessions. Add button to clear all/check all. 
 - [x] Support NAMING the job at submit time
-- [ ] BLAST is consolidated to a single Agave app now. The specific program to run is distinguished by ```parameters.blast_application```
-- [ ] Current production version(s) of ncbi-blast app is stored in **araport.ncbi-blast.applist** metadata. It is a list with at least one value. Grab the list, select one at random. This will allow hot swapping the Agave app without redeploying the UI assets.
+- [x] BLAST is consolidated to a single Agave app now. The specific program to run is distinguished by ```parameters.blast_application```
+- [x] Current production version(s) of ncbi-blast app is stored in **araport.ncbi-blast.applist** metadata. It is a list with at least one value. Grab the list, select one at random. This will allow hot swapping the Agave app without redeploying the UI assets.
 - [ ] Create a standalone My BLASTS app with just the history plus extra sugar (share, download, etc)
 - [ ] In Blast Input Sequence, allow select/upload in addition to paste. On paste, allow naming of file.
 - [x] Under Advanced Options, reorder params by priority (see below)
 - [x] Rename Job History to "BLAST History"
 - [ ] Enhance the UX around the progress meter: Either a progress bar thing or at least replace the AGAVE STATUS words with human-comprehensible text (I like the former idea BTW)
 - [x] On job submit, pop open the History panel to highlight that it exists
-- [ ] Replace BLAST app dropdown with Bootstrap-style radio buttons
+- [x] Replace BLAST app dropdown with Bootstrap-style radio buttons
 - [x] Disable the Run BLAST button until at least an input sequence and database have been selected
-- [ ] Make the Run BLAST button more evident, either by placement or appearance
+- [x] Make the Run BLAST button more evident, either by placement or appearance
 
 *** 10/30/2015 ***   
 
