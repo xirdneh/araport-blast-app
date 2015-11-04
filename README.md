@@ -81,7 +81,6 @@ BLAST notes
 - Check with Steve on how SpartA handles uploads
 - Custom databases will only be Update and Select, no pasting!
 - araport.blastapp.index metadata is for the Agave app, the parameter is for the blast type.
-- 
 
 ## BLAST app via databases to display
 
